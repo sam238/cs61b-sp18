@@ -1,4 +1,4 @@
-public class LinkListDeque<T> {
+public class LinkedListDeque<T> {
     private class Node {
         private T item;
         private Node prev;
@@ -15,7 +15,7 @@ public class LinkListDeque<T> {
     private int size;
     private Node sentinel;
 
-    public LinkListDeque() {
+    public LinkedListDeque() {
         size = 0;
         sentinel = new Node(null, null, null);
         sentinel.next = sentinel;
@@ -72,7 +72,7 @@ public class LinkListDeque<T> {
     }
 
     public static void main(String[] args) {
-        LinkListDeque<Integer> ldd = new LinkListDeque<>();
+        LinkedListDeque<Integer> ldd = new LinkedListDeque<>();
         ldd.addFirst(19);
         ldd.addFirst(5);
         ldd.addLast(30);
