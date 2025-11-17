@@ -53,7 +53,9 @@ public class LinkedListDeque<T> {
     }
 
     public T removeFirst() {
-        if (isEmpty()) return  null;
+        if (isEmpty()) {
+            return  null;
+        }
         Node firstNode = sentinel.next;
         T first = firstNode.item;
         sentinel.next = firstNode.next;
@@ -63,11 +65,13 @@ public class LinkedListDeque<T> {
     }
 
     public T removeLast() {
-        if (isEmpty()) return null;
-        Node LastNode = sentinel.prev;
-        T last = LastNode.item;
-        sentinel.prev = LastNode.prev;
-        LastNode.prev.next = sentinel;
+        if (isEmpty()) {
+            return null;
+        }
+        Node lastNode = sentinel.prev;
+        T last = lastNode.item;
+        sentinel.prev = lastNode.prev;
+        lastNode.prev.next = sentinel;
         size -= 1;
         return  last;
     }
@@ -80,15 +84,5 @@ public class LinkedListDeque<T> {
             p = p.next;
         }
         return p.item;
-    }
-
-    public static void main(String[] args) {
-        LinkedListDeque<Integer> ldd = new LinkedListDeque<>();
-        ldd.addFirst(19);
-        ldd.addFirst(5);
-        ldd.addLast(30);
-        ldd.printDeque();
-        System.out.println(ldd.size());
-        System.out.println(ldd.get(1));
     }
 }

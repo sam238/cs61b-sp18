@@ -68,46 +68,40 @@ public class ArrayDeque<T> {
     }
 
     public T removeFirst() {
-        if (isEmpty()) return null;
+        if (isEmpty()) {
+            return null;
+        }
         int first = plusOne(nextLeft);
         T val = item[first];
         item[first] = null;
         nextLeft = first;
         size -= 1;
-        if (item.length > 8 && size < item.length / 4) {
+        if (item.length >= 16 && size < item.length / 4) {
             resize(item.length / 2);
         }
         return val;
     }
 
     public T removeLast() {
-        if (isEmpty()) return null;
-        int last = plusOne(nextRight);
+        if (isEmpty())  {
+            return null;
+        }
+        int last = minusOne(nextRight);
         T val = item[last];
         item[last] = null;
         nextRight = last;
         size -= 1;
-        if (item.length > 8 && size < item.length / 4) {
+        if (item.length >= 16 && size < item.length / 4) {
             resize(item.length / 2);
         }
         return val;
     }
 
     public T get(int index) {
-        if (index < 0 || index >= size) return null;
+        if (index < 0 || index >= size) {
+            return null;
+        }
         int first = plusOne(nextLeft);
         return item[(first + index) % item.length];
-    }
-
-    public static void main(String[] args) {
-        ArrayDeque<Integer> ad = new ArrayDeque<>();
-        ad.addFirst(100);
-        ad.addFirst(50);
-        ad.addFirst(10);
-        ad.addLast(200);
-        ad.addLast(500);
-        ad.removeFirst();
-        ad.removeLast();
-        ad.printDeque();
     }
 }
