@@ -4,10 +4,10 @@ public class LinkedListDeque<T> {
         private Node prev;
         private Node next;
 
-        public Node(Node p, T i, Node n) {
-            prev = p;
-            item = i;
-            next = n;
+        public Node(Node prev, T item, Node next) {
+            this.prev = prev;
+            this.item = item;
+            this.next = next;
         }
 
     }
